@@ -12,7 +12,6 @@ Provides:       python-pydns = %{epoch}:%{version}-%{release}
 Provides:       python-DNS = %{epoch}:%{version}-%{release}
 BuildArch:      noarch
 %py_requires -d
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 This is a another release of the pydns code, as originally written by
