@@ -1,6 +1,6 @@
 Name:           python-dns
-Version:        2.3.4
-Release:        %mkrel 2
+Version:        2.3.5
+Release:        %mkrel 1
 Epoch:          0
 Summary:        Python module for DNS (Domain Name Service)
 Group:          Development/Python
