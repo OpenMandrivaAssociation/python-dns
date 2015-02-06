@@ -1,6 +1,6 @@
 Name:           python-dns
 Version:        2.3.6
-Release:        1
+Release:        2
 Epoch:          0
 Summary:        Python module for DNS (Domain Name Service)
 
