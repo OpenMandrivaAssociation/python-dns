@@ -1,43 +1,67 @@
-Name:           python-dns
-Version:        2.3.6
-Release:        2
-Epoch:          0
-Summary:        Python module for DNS (Domain Name Service)
+%global pypi_name dnspython
+%global py_package_name dns
 
-Group:          Development/Python
-License:        Python Software Foundation License
-URL:            http://pydns.sourceforge.net/
-Source0:        pydns-%{version}.tar.gz
-Provides:       pydns = %{epoch}:%{version}-%{release}
-Provides:       python-pydns = %{epoch}:%{version}-%{release}
-Provides:       python-DNS = %{epoch}:%{version}-%{release}
+# Disable dependency generator until it has test code
+%{?python_disable_dependency_generator}
+
+Name:           python-%{py_package_name}
+Version:        1.16.0
+Release:        9%{?dist}
+Summary:        DNS toolkit for Python
+
+License:        MIT
+URL:            http://www.dnspython.org
+
+Source0:        http://www.dnspython.org/kits/%{version}/%{pypi_name}-%{version}.tar.gz
+
+# A no-op typing module for import compatibility
+# This avoids the build dependency on python2-typing
+Source1:        typing.py
+
 BuildArch:      noarch
-BuildRequires:  python-devel
 
-%description
-This is a another release of the pydns code, as originally written by
-Guido van Rossum, and with a hopefully nicer API bolted over the
-top of it by Anthony Baxter <anthony@interlink.com.au>.
+Patch0:         unicode_label_escapify.patch
+Patch1:         collections_abc.patch
+Patch2:		python-dns-1.16-base64.patch
 
-This package contains a module (dnslib) that implements a DNS
-(Domain Name Server) client, plus additional modules that define some
-symbolic constants used by DNS (dnstype, dnsclass, dnsopcode).
+BuildRequires:  python3-devel
+BuildRequires:  python-setuptools
+
+%global _description %{expand:
+dnspython is a DNS toolkit for Python. It supports almost all record
+types. It can be used for queries, zone transfers, and dynamic
+updates. It supports TSIG authenticated messages and EDNS0.
+
+dnspython provides both high and low level access to DNS. The high
+level classes perform queries for data of a given name, type, and
+class, and return an answer set. The low level classes allow direct
+manipulation of DNS zones, messages, names, and records.
+}
+
+%description %_description
+%package -n python3-%{py_package_name}
+Summary:        %{summary}
+BuildRequires:  python3-devel
+Provides:	python-%{py_package_name} = %{EVRD}
+Provides:	python-%{pypi_name} = %{EVRD}
+
+%description -n python3-%{py_package_name} %_description
 
 %prep
-%setup -q -n pydns-%{version}
+%autosetup -p1 -n %{pypi_name}-%{version}
+
+# strip exec permissions so that we don't pick up dependencies from docs
+find examples -type f | xargs chmod a-x
 
 %build
-python setup.py build
+%py3_build
 
 %install
-python setup.py install -O2 --skip-build --root %{buildroot}
+%py3_install
 
-%clean
-
-%files
-%defattr(0644,root,root,0755)
-%doc CREDITS.txt PKG-INFO README-guido.txt README.txt
-%{py_puresitedir}/*
-
-
+%files -n python3-%{py_package_name}
+%license LICENSE
+%doc README.md examples
+%{python3_sitelib}/%{py_package_name}
+%{python3_sitelib}/%{pypi_name}-*.egg-info
 
