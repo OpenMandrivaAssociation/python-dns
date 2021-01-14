@@ -34,14 +34,17 @@ class, and return an answer set. The low level classes allow direct
 manipulation of DNS zones, messages, names, and records.
 }
 
-%description %_description
+%description
+%_description
+
 %package -n python3-%{py_package_name}
 Summary:        %{summary}
 BuildRequires:  python3-devel
 Provides:	python-%{py_package_name} = %{EVRD}
 Provides:	python-%{pypi_name} = %{EVRD}
 
-%description -n python3-%{py_package_name} %_description
+%description -n python3-%{py_package_name}
+%_description
 
 %prep
 %autosetup -p1 -n %{pypi_name}-%{version}
