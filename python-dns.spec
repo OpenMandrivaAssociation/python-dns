@@ -5,24 +5,20 @@
 %{?python_disable_dependency_generator}
 
 Name:           python-%{py_package_name}
-Version:        1.16.0
-Release:        9%{?dist}
+Version:        2.1.0
+Release:        1
 Summary:        DNS toolkit for Python
 
 License:        MIT
 URL:            http://www.dnspython.org
 
-Source0:        http://www.dnspython.org/kits/%{version}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/dnspython/%{pypi_name}-%{version}.zip
 
 # A no-op typing module for import compatibility
 # This avoids the build dependency on python2-typing
 Source1:        typing.py
 
 BuildArch:      noarch
-
-Patch0:         unicode_label_escapify.patch
-Patch1:         collections_abc.patch
-Patch2:		python-dns-1.16-base64.patch
 
 BuildRequires:  python3-devel
 BuildRequires:  python-setuptools
@@ -64,4 +60,3 @@ find examples -type f | xargs chmod a-x
 %doc README.md examples
 %{python3_sitelib}/%{py_package_name}
 %{python3_sitelib}/%{pypi_name}-*.egg-info
-
