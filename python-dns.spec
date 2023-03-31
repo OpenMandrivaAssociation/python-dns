@@ -6,7 +6,7 @@
 
 Name:           python-%{py_package_name}
 Version:        2.1.0
-Release:        1
+Release:        2
 Summary:        DNS toolkit for Python
 
 License:        MIT
