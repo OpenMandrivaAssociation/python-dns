@@ -10,7 +10,7 @@ Release:        2
 Summary:        DNS toolkit for Python
 
 License:        MIT
-URL:            http://www.dnspython.org
+URL:            https://www.dnspython.org
 
 Source0:        https://files.pythonhosted.org/packages/source/d/dnspython/%{pypi_name}-%{version}.zip
 
