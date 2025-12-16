@@ -15,6 +15,7 @@ BuildArch:	noarch
 
 BuildSystem:	python
 BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(hatchling)
 
 # Renamed 2025/12/16 after 6.0
 %rename python3-%{name}
