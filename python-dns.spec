@@ -3,7 +3,7 @@
 
 Name:		python-%{py_package_name}
 Version:	2.8.0
-Release:	1
+Release:	2
 Summary:	DNS toolkit for Python
 
 License:	MIT
@@ -19,6 +19,7 @@ BuildRequires:	python%{pyver}dist(hatchling)
 
 # Renamed 2025/12/16 after 6.0
 %rename python3-%{name}
+%rename python3-%{py_package_name}
 
 %description
 dnspython is a DNS toolkit for Python. It supports almost all record
