@@ -11,6 +11,8 @@ Group:	Development/Python
 URL:		https://www.dnspython.org
 
 Source0:	https://files.pythonhosted.org/packages/source/d/dnspython/%{pypi_name}-%{version}.tar.gz
+# 2.9.0 still has LICENSE in the git tag, but the PyPI sdist omits it.
+Source1:	%{pypi_name}-%{version}-LICENSE
 
 BuildArch:	noarch
 
@@ -33,6 +35,7 @@ class, and return an answer set. The low level classes allow direct
 manipulation of DNS zones, messages, names, and records.
 
 %prep -a
+cp -a %{SOURCE1} LICENSE
 # strip exec permissions so that we don't pick up dependencies from docs
 find examples -type f | xargs chmod a-x
 
