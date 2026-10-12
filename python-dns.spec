@@ -15,8 +15,8 @@ Source0:	https://files.pythonhosted.org/packages/source/d/dnspython/%{pypi_name}
 BuildArch:	noarch
 
 BuildSystem:	python
-BuildRequires:	python%{pyver}dist(setuptools)
-BuildRequires:	python%{pyver}dist(hatchling)
+BuildRequires:	python%{pyver}dist(uv-build)
+BuildRequires:	python%{pyver}dist(pip)
 
 # Renamed 2025/12/16 after 6.0
 %rename python3-%{name}
