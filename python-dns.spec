@@ -2,11 +2,12 @@
 %global py_package_name dns
 
 Name:		python-%{py_package_name}
-Version:	2.8.0
-Release:	2
+Version:	2.9.0
+Release:	1
 Summary:	DNS toolkit for Python
 
 License:	MIT
+Group:	Development/Python
 URL:		https://www.dnspython.org
 
 Source0:	https://files.pythonhosted.org/packages/source/d/dnspython/%{pypi_name}-%{version}.tar.gz
